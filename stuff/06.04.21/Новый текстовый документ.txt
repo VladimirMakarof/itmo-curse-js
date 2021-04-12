@@ -1,0 +1,12 @@
+let n = 45; 
+let sum = n % 10 + (n - n % 10) / 10;
+===
+let n = 34; // 7
+let sum = 
+===
+a = a + b ;
+b =  a - b;
+a = a - b;
+===
+let between;
+between = start < and ? end - start : -1;
