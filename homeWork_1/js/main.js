@@ -37,8 +37,8 @@ console.log(res);
 //Даны 2 переменные типа number start и end. 
 //Если start меньше end переменной between присвоить значение end - start,
 //в противном случае -1
-let start=100;
-let end=30;
+let start=10;
+let end=100;
 let between = (start < end) ? (end - start) : (-1);
 console.log(between);
 //let isActive = true;

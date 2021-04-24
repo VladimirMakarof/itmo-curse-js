@@ -123,3 +123,37 @@ for (let i = 1; i <= 10; i++ ) {
 	// если answer равно 1 -> maximum = tmp 
 	// если answer равно 0 -> minimum = tmp
 //}
+let arr = Array(100).fill(1).map((v,i) => v + i); // будем считать что уже сделан .sort
+function binaryGuess(arr) {
+  if (arr.length === 1) {
+    return alert('Загаданое число было ' + arr[0]);
+  };
+  if (arr.length < 1) {
+    return alert('Где то меня обманули');
+  };
+  let nextIdx = Math.floor(arr.length / 2); 
+  
+  if (confirm('Ответ ' + arr[nextIdx] + ' ?')) {
+    return alert('Я это и так знал');
+  } else {
+    if (confirm('Больше ?')) {
+      binaryGuess(arr.slice(nextIdx));
+    } else {
+      binaryGuess(arr.slice(0, nextIdx - 1));
+    };	
+  };
+};
+
+function startGuessing(r) {
+  alert('Ты загадал ' + r);
+  binaryGuess(arr);
+  if (confirm('Повторим ?')) {
+    startGuessing(rand());
+  };	
+};
+
+startGuessing(rand());
+
+function rand() {
+  return Math.floor(Math.random() * (100 - 1) + 1);
+};
