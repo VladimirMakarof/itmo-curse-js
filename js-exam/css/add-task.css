@@ -1,0 +1,146 @@
+@import "style.css";
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.panel{
+  display: flex;
+  flex-direction: row;
+}
+
+form>div:last-child{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+form input[type="text"],
+form input[type="date"],
+form textarea,
+select{
+  vertical-align: middle;
+  margin: 5px 10px 5px 0;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  display:block;
+}
+
+form input[type="text"],
+form textarea
+{
+  width: 100%;
+}
+form span
+{
+  display: block;
+  color: transparent;
+  font-size:small;
+}
+
+form input[type="submit"] {
+  padding: 10px 30px;
+  margin: auto 10px;
+  background-color: #1e90ff;
+  border: 1px solid #ddd;
+  color: white;
+  cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+  background-color: #62c205;
+}
+form input[type="reset"] {
+  padding: 10px 20px;
+  margin: auto 10px;
+  background-color: lightgrey;
+  border: 1px solid #cbcbcb;
+  color: white;
+  cursor: pointer;
+}
+
+form input[type="reset"]:hover {
+  background-color: red;
+}
+
+a.add-user {
+  /* border: 1px solid #ddd; */
+  cursor: pointer;
+  text-decoration: none;
+  background-color: #E7E9EB;
+  color: black;
+  border: 1px solid #ccc;
+}
+
+a.add-user:link, a.add-user:visited {
+  background-color: #E7E9EB;
+  color: black;
+  border: 2px solid #ccc;
+  padding: 5px 20px 5px 40px;
+  text-align: center;
+  text-decoration: none;
+  /* display: inline-block; */
+}
+
+a.add-user:hover, a.add-user:active {
+  background-color: #cbcbcb;
+}
+
+.panel-add-user{
+  position: relative;
+}
+.panel-add-user a span{
+  position: absolute;
+  left: 11px;
+  bottom: -1.5px;
+}
+
+#p_addtask{
+    position: fixed;
+    top: 65px;
+    left: 1%;
+    border: 1px solid #a0c7e4;
+    background-color: #e1ecf4;
+    width:98%;
+    padding: 10px 30px;
+}
+
+.icon-div{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 0.3em;
+}
+.icon-div:hover{
+  cursor: pointer;
+  color: #1e90ff;
+}
+
+#p_addtask.hide{
+  transform: scale(0);
+}
+
+#p_addtask {
+    transition: opacity 2s ease;
+}
+
+.icon-remove{
+  color: black;
+  display: block;
+}
+.icon-remove{
+  color: black;
+}
+.icon-remove:hover{
+  cursor: pointer;
+  color: #1e90ff;
+}
+div[name="panel-user"]{
+  display: flex;
+  align-items: center;
+  margin-right: 1em;
+}

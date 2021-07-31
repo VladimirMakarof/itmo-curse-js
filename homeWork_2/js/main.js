@@ -114,46 +114,20 @@ for (let i = 1; i <= 10; i++ ) {
 Программа может задавать пользователю вопросы:
 Число равно ...? / Число больше ...? / Число меньше ...? и в зависимоти от ответа пользователя принимать решения.
 Вместо текстовых ответов ДА/НЕТ, можно использовать числа 0 - НЕТ и 1 - ДА*/
-//let minimum = 1, maximum = 100;
-//while (true) { // 1 - "Да" 2 - "Нет"
-	// let tmp = minimum + maximum / 2 (pront)
-	// let answer это число равно tmp?
-	// если answer равно 1 -> break
-	// answer = это число меньше tmp? 
-	// если answer равно 1 -> maximum = tmp 
-	// если answer равно 0 -> minimum = tmp
-//}
-let arr = Array(100).fill(1).map((v,i) => v + i); // будем считать что уже сделан .sort
-function binaryGuess(arr) {
-  if (arr.length === 1) {
-    return alert('Загаданое число было ' + arr[0]);
-  };
-  if (arr.length < 1) {
-    return alert('Где то меня обманули');
-  };
-  let nextIdx = Math.floor(arr.length / 2); 
-  
-  if (confirm('Ответ ' + arr[nextIdx] + ' ?')) {
-    return alert('Я это и так знал');
-  } else {
-    if (confirm('Больше ?')) {
-      binaryGuess(arr.slice(nextIdx));
-    } else {
-      binaryGuess(arr.slice(0, nextIdx - 1));
-    };	
-  };
-};
+prompt('Загадайте число от 1 до 100');
 
-function startGuessing(r) {
-  alert('Ты загадал ' + r);
-  binaryGuess(arr);
-  if (confirm('Повторим ?')) {
-    startGuessing(rand());
-  };	
-};
-
-startGuessing(rand());
-
-function rand() {
-  return Math.floor(Math.random() * (100 - 1) + 1);
-};
+let min = 1, max = 100;
+while (true) { // Да - 1, Нет - 0
+let tmp = (min + max) / 2;
+let answer = parseInt(prompt(`Это число равно ${tmp} ? Если да - введите 1, нет - введите 0`));
+if (answer === 1) {
+console.log(`Вы загадали число ${tmp}`);
+break;
+}
+else answer = parseInt(prompt(`Ваше число меньше ${tmp}? Если да - введите 1, нет - введите 0`));
+if (answer === 1)
+max = tmp;
+else
+min = tmp;
+tmp = (min + max) / 2;
+}

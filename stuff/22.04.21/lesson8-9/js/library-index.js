@@ -36,23 +36,21 @@ function getRandomBooks() {
         },
     ];
 }
-//<div>
-//     <img>
-//      <a href=#
-//<div>
-// innerHTML всегда будет перезаписывать элемент, те если в book что либо было то произошла бы перезапись 
+/*<div>
+    <img src="https://picsum.photos/200/300?random=1">
+    <a href="#">Читать</a>
+</div>*/
 function addRandomBooks(where, books){
-    for (let book of books){
-        let bookDiv = document.createElement('div');
-        bookDiv.innerHTML = ` 
-    <img src="${book.img}">
-    <a href="one-book.html?id=${book.id}"> Читать </a> 
+    for (let book of books) {
+        let bookDiv = document.createElement("div");
+        bookDiv.innerHTML = `
+            <img src="${book.img}">
+            <a href="one-book.html?id=${book.id}">Читать</a>
         `;
-    where.append(bookDiv);
+        where.append(bookDiv);
     }
 }
-addRandomBooks(document.querySelector('.random'), getRandomBooks());
-
+addRandomBooks(document.querySelector(".random"), getRandomBooks());
 
 function getBooksByGenre() {
     return [
@@ -113,43 +111,31 @@ function getBooksByGenre() {
     ]
 }
 
-function addByGender(where, byGenre){
-    for(let genre of byGenre){
-        // создать секцию
-        let section = document.createElement("section");
 
-        let title = document.createElement('h2');
-        title.innerText = `Книги из жанра 1 ${genre.genreName}`;
-        // создать заголовок секции
-        // в section добавить title
-        section.append(title)
-    
-    for(let book of genre.books){
-        // создание div 
-        let genreDiv = document.createElement('div');
-        // напомлнение div элементами через innerHTML
-        let article = document.createElement('p');
-        article.innerText = ` ${book.title}`;
-        // в genreDiv добавить article
+function addByGenre(where, byGenre) {
+    for (let genre of byGenre) {
+        let genreSection = document.createElement('section');
+        genreSection.classList.add('flex-row', 'wrap');
+        let h2Element = document.createElement('h2');
+        h2Element.classList.add('text-shadow-blue', 'text-center', 'section-title');
+        h2Element.innerText = genre.genreName;
+        genreSection.append(h2Element);
 
-        let span = document.createElement('p');
-        // span.innerText = ` ${object[genreName].span}`;
-
-        let imgDiv = document.createElement('div');
-
-        let img = document.createElement('img');
-        // img.setAttribute('src', object[genreName].img);
-        // в div добавить img
-
-        let p = document.createElement('p');
-        // span.innerText = ` ${object[genreName].span}`;
-
-        // в article добавить span, imgDiv, p
-        section.append(genreDiv);
-
+        for (let book of genre.books) {
+            let div = document.createElement('div');
+           div.classList.add('col-4', 'col-sm-6', 'col-xs-12', 'flex-row');
+            div.innerHTML =
+                `<article class="book">
+                <span>${book.title}</span>
+                <div><img src="${book.img}" alt="${book.title}"></div>
+                <p>${book.description}</p>
+                <a href="one-book.html?id=${book.id}">Читать</a>
+            </article>`;
+            genreSection.append(div);
+        }
+        where.append(genreSection);
     }
+}
 
-    where.append(section);
-}
-}
-addByGender(document.querySelector('main'), getBooksByGenre());
+
+addByGenre(document.querySelector("main"), getBooksByGenre());
